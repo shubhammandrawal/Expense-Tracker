@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import './expenseForm.css';
 export default function ExpenseForm({SaveExpenses}){
-    // const[title, setTitle] = useState('')
+     // const[title, setTitle] = useState('')
     // const[amount, setAmount] = useState('')
     // const[date, setDate] = useState('')
 
@@ -9,7 +9,7 @@ export default function ExpenseForm({SaveExpenses}){
         {
             title: '',
             amount: '',
-            date: new Date('date')
+            date: ''
         }
     )
 
@@ -64,8 +64,8 @@ const SubmitHandler = (e) => {
                     <label>Date</label>
                     <input 
                         type="date" 
-                        min='01-01-2022' 
-                        max='31-12-2023' 
+                        min="01-01-2020" 
+                        max="31-12-2022" 
                         onChange={dateChangeHandler} 
                         value={data.date} 
                     />

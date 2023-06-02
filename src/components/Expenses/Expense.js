@@ -1,45 +1,27 @@
-import NewExpense from "../NewExpense/NewExpense";
+import { useState } from "react";
+import ExpensesFilter from "../ExpenseFilter/ExpenseFilter";
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
 import './expenses.css'
 
-export default function Expenses(){
-    const expenses = [
-        {
-          id: 'e1',
-          title: 'Toilet Paper',
-          amount: 94.12,
-          date: new Date(2020, 7, 14),
-        },
-        { id: 'e2', title: 'New TV', amount: 799.49, date: new Date(2021, 2, 12) },
-        {
-          id: 'e3',
-          title: 'Car Insurance',
-          amount: 294.67,
-          date: new Date(2021, 2, 28),
-        },
-        {
-          id: 'e4',
-          title: 'New Desk (Wooden)',
-          amount: 450,
-          date: new Date(2021, 5, 12),
-        },
-      ];
+export default function Expenses({expenses}){
 
-    const AddExpensesHandler = (expenses) =>{
-        console.log('In App')
-        console.log(expenses)
+  const[year, setYear] = useState('2020')
+
+    const FilterHandler = (selectedYear) =>{
+        setYear(selectedYear)
     }
       
     return<>
-    <NewExpense onAddExpense={AddExpensesHandler} />
     <Card className="expenses">
-          {expenses.map((expense, key)=>{
+      <ExpensesFilter FilterHandler={FilterHandler} selected={year}    />
+          {expenses.map((item)=>{
+            // debugger
             return <ExpenseItem 
-                      title={expense.title} 
-                      amount={expense.amount}
-                      date={expense.date}
-                      key = {key}
+                      title={item.title} 
+                      amount={item.amount}
+                      date={item.date}
+                      key = {item.id}
                   />
           })}
     </Card>

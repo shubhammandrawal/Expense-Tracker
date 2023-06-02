@@ -7,7 +7,6 @@ export default function NewExpense({onAddExpense}){
             ...prevData,
             id: Math.random().toString()
         }
-        // console.log(expenseData)
         onAddExpense(expenseData)
     }
     return<div className='new-expense'>
