@@ -1,6 +1,7 @@
 import {useState} from 'react';
 import './expenseForm.css';
-export default function ExpenseForm({SaveExpenses}){
+import Action from './Action';
+export default function ExpenseForm({SaveExpenses, stopEditingHandler}){
      // const[title, setTitle] = useState('')
     // const[amount, setAmount] = useState('')
     // const[date, setDate] = useState('')
@@ -9,7 +10,7 @@ export default function ExpenseForm({SaveExpenses}){
         {
             title: '',
             amount: '',
-            date: ''
+            date: new Date()
         }
     )
 
@@ -37,7 +38,7 @@ const SubmitHandler = (e) => {
     setData({
         title: '',
         amount: '',
-        date: ''
+        date: new Date().toDateString()
     })
 }
 
@@ -71,8 +72,6 @@ const SubmitHandler = (e) => {
                     />
                 </div>
             </div>
-            <div className='new-expense__actions'>
-                    <button type='submit'>Add Expense</button>
-             </div>
+            <Action onCancelClick={stopEditingHandler} />
     </form>
 }
